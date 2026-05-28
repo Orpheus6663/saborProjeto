@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mundo Encantado</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<nav>
+    <button class="logo-botao" id="btnLogoHome" type="button" aria-label="Voltar para home">
+        <img src="./assets/logoMundoEncantado.png" alt="Logo Mundo Encantado">
+    </button>
+
+    <ul class="menu-categorias">
+        <li><button class="nav-link ativo" type="button" data-categoria="">Home</button></li>
+        <li><button class="nav-link" type="button" data-categoria="Colecionaveis">Colecionáveis</button></li>
+        <li><button class="nav-link" type="button" data-categoria="Pelucias">Pelúcias</button></li>
+        <li><button class="nav-link" type="button" data-categoria="Menina">Menina</button></li>
+        <li><button class="nav-link" type="button" data-categoria="Meninos">Meninos</button></li>
+        <li><button class="nav-link" type="button" data-categoria="Bebes">Bebês</button></li>
+        <li><button class="nav-link" id="btnContatoMenu" type="button">Contato</button></li>
+    </ul>
+
+    <div class="Buscar">
+        <input class="input" type="text" id="busca" placeholder="Buscar...">
+        <button class="botao" id="btnBuscar">Buscar</button>
+        <button class="botao" id="btnConta" type="button">Entrar</button>
+        <button class="botao carrinho-botao" id="btnCarrinho" type="button">
+            Carrinho <span id="contadorCarrinho">0</span>
+        </button>
+    </div>
+</nav>
+
+<div class="carousel" id="carousel">
+    <img src="./assets/wallpaper.jpg" class="active" alt="Brinquedos Mundo Encantado">
+    <img src="./assets/cardCarrosel.jpg" alt="Promocao de brinquedos">
+    <img src="./assets/cardCarrosel2.avif" alt="Novidades da loja">
+
+    <div class="carousel-buttons">
+        <button onclick="prevSlide()">&lsaquo;</button>
+        <button onclick="nextSlide()">&rsaquo;</button>
+    </div>
+</div>
+
+<section class="container">
+    <h2 id="tituloProdutos">Nossos Produtos</h2>
+
+    <div class="produtos" id="listaProdutos">
+        <p class="mensagem">Carregando produtos...</p>
+    </div>
+</section>
+
+<section class="contato-secao" id="contatoSecao">
+    <div class="contato-texto">
+        <h2>Contato</h2>
+        <p>Fale com a Mundo Encantado sobre pedidos, duvidas ou sugestoes.</p>
+    </div>
+
+    <form class="form-contato" id="formContato">
+        <input type="text" id="contatoNome" placeholder="Seu nome">
+        <input type="email" id="contatoEmail" placeholder="Seu email">
+        <input type="text" id="contatoAssunto" placeholder="Assunto">
+        <textarea id="contatoMensagem" rows="5" placeholder="Mensagem"></textarea>
+        <button type="submit">Enviar email</button>
+    </form>
+</section>
+
+<div class="carrinho-fundo" id="carrinhoFundo"></div>
+<div class="conta-fundo" id="contaFundo"></div>
+
+<aside class="conta" id="conta">
+    <div class="conta-topo">
+        <h3>Minha Conta</h3>
+        <button type="button" id="btnFecharConta">X</button>
+    </div>
+
+    <div class="usuario-logado" id="usuarioLogado"></div>
+
+    <div class="abas-conta">
+        <button type="button" class="aba-conta ativa" id="abaEntrar">Entrar</button>
+        <button type="button" class="aba-conta" id="abaCadastrar">Cadastrar</button>
+    </div>
+
+    <form class="form-conta ativo" id="formEntrar">
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginSenha" placeholder="Senha">
+        <button type="submit">Entrar</button>
+    </form>
+
+    <form class="form-conta" id="formCadastrar">
+        <input type="text" id="cadastroNome" placeholder="Nome">
+        <input type="email" id="cadastroEmail" placeholder="Email">
+        <input type="password" id="cadastroSenha" placeholder="Senha">
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <button type="button" class="sair" id="btnSair">Sair</button>
+</aside>
+
+<aside class="carrinho" id="carrinho">
+    <div class="carrinho-topo">
+        <h3>Meu Carrinho</h3>
+        <button type="button" id="btnFecharCarrinho">X</button>
+    </div>
+
+    <div class="carrinho-itens" id="itensCarrinho">
+        <p class="carrinho-vazio">Seu carrinho esta vazio.</p>
+    </div>
+
+    <div class="carrinho-total">
+        <span>Total</span>
+        <strong id="totalCarrinho">R$ 0,00</strong>
+    </div>
+
+    <div class="checkout">
+        <div class="cep-linha">
+            <input type="text" id="cepPedido" placeholder="CEP">
+            <button type="button" id="btnBuscarCep">Buscar CEP</button>
+        </div>
+        <input type="text" id="enderecoPedido" placeholder="Endereco de entrega">
+        <button type="button" id="btnFinalizarPedido">Finalizar pedido</button>
+        <button type="button" id="btnLimparCarrinho">Limpar carrinho</button>
+    </div>
+</aside>
+
+<div class="pagamento-fundo" id="pagamentoFundo"></div>
+<section class="pagamento" id="pagamento">
+    <div class="pagamento-topo">
+        <h3>Pagamento</h3>
+        <button type="button" id="btnFecharPagamento">X</button>
+    </div>
+
+    <div class="pagamento-resumo" id="resumoPagamento"></div>
+
+    <label for="metodoPagamento">Metodo de pagamento</label>
+    <select id="metodoPagamento">
+        <option value="pix">Pix</option>
+        <option value="cartao">Cartao</option>
+        <option value="boleto">Boleto</option>
+    </select>
+
+    <div class="dados-cartao">
+        <input type="text" placeholder="Numero do cartao">
+        <div>
+            <input type="text" placeholder="Validade">
+            <input type="text" placeholder="CVV">
+        </div>
+    </div>
+
+    <button type="button" id="btnConfirmarPagamento">Confirmar pagamento</button>
+</section>
+
+<footer>
+    <div>
+        <strong>Mundo Encantado</strong>
+        <p>Brinquedos, pelucias e colecionaveis para deixar a brincadeira mais doce.</p>
+    </div>
+    <div>
+        <span>Atendimento</span>
+        <p>contato@mundoencantado.com</p>
+        <p>Segunda a sexta, 9h as 18h</p>
+    </div>
+    <div>
+        <span>Redes Sociais</span>
+        <p>*Instagram</p>
+        <p>*Tiktok</p>
+        <p>*Facebook</p>
+        <p>*Whatsapp</p>
+    </div>
+</footer>
+
+<script src="./js/script.js"></script>
+</body>
+</html>
